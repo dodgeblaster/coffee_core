@@ -14,7 +14,7 @@ module.exports = {
             ]
         },
         {
-            name: 'TestStage',
+            name: 'Staging',
             actions: [
                 {
                     type: 'BUILD',
