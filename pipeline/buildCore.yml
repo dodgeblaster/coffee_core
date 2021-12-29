@@ -6,5 +6,5 @@ phases:
 
     build:
         commands:
-            - npm i -g focus-cli
+            - npm i -g sls-focus-cli
             - cd ./app && focus deploy
