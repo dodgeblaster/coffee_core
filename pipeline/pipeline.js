@@ -14,45 +14,25 @@ module.exports = {
             ]
         },
         {
-            name: 'DeployTestStage',
+            name: 'TestStage',
             actions: [
                 {
                     type: 'BUILD',
-                    name: 'DeployTestStage',
+                    name: 'Deploy',
                     script: '/deploy.yml',
                     env: {
                         STAGE: 'test'
                     },
                     inputArtifact: 'sourceZip',
                     outputArtifact: 'buildZip'
+                },
+                {
+                    type: 'INVOKE',
+                    name: 'Test',
+                    functionName: 'coffeecoretests-makePaymentTest-dev',
+                    region: 'us-east-1'
                 }
             ]
         }
-        // {
-        //     name: 'DeployTests',
-        //     actions: [
-        //         {
-        //             type: 'BUILD',
-        //             name: 'DeployApiTests',
-        //             script: '/deployApiTests.yml',
-        //             env: {
-        //                 STAGE: 'test'
-        //             },
-        //             inputArtifact: 'sourceZip',
-        //             outputArtifact: 'buildZip'
-        //         }
-        //     ]
-        // },
-        // {
-        //     name: 'RunTests',
-        //     actions: [
-        //         {
-        //             type: 'INVOKE',
-        //             name: 'DeployTestInfra',
-        //             functionName: 'risefoundationtests-createTestInfra-dev',
-        //             region: 'us-east-1'
-        //         }
-        //     ]
-        // }
     ]
 }

@@ -36,7 +36,6 @@ async function invoke(name, input) {
     const lambda = new AWS.Lambda()
     const params = {
         FunctionName: name,
-        LogType: None | Tail,
         Payload: JSON.stringify({
             ...input
         })
