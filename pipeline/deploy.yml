@@ -8,3 +8,4 @@ phases:
         commands:
             - npm i -g sls-focus-cli
             - cd ./app && focus deploy
+            - cd ../tests && focus deploy

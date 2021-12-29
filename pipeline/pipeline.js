@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'sonic-shopexample-pipeline',
+    name: 'coffee-core-pipeline',
     stages: [
         {
             name: 'source',
@@ -7,8 +7,8 @@ module.exports = {
                 {
                     type: 'SOURCE',
                     name: 'source',
-                    repo: 'rise-foundation',
-                    owner: 'rise-cli',
+                    repo: 'coffee_core',
+                    owner: 'dodgeblaster',
                     outputArtifact: 'sourceZip'
                 }
             ]
@@ -18,8 +18,8 @@ module.exports = {
             actions: [
                 {
                     type: 'BUILD',
-                    name: 'DeployApi',
-                    script: '/deployApi.yml',
+                    name: 'DeployTestStage',
+                    script: '/deploy.yml',
                     env: {
                         STAGE: 'test'
                     },

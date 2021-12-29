@@ -22,9 +22,15 @@ const emit = async (event, input) => {
 const wait = () => new Promise((r) => setTimeout(r, 2000))
 
 const makePayment = async (e) => {
-    // do a bunch of logic...
-    console.log('payment started')
-    await wait()
+    if (e.synth) {
+        // do a bunch of logic...
+        console.log('payment started')
+        await wait()
+    } else {
+        // do a bunch of logic...
+        console.log('payment started')
+        await wait()
+    }
 }
 
 module.exports.handler = async (e) => {
@@ -36,4 +42,11 @@ module.exports.handler = async (e) => {
         statusDetails: 'Payment went thru',
         products: e.detail.products
     })
+    return {
+        id: e.detail.id,
+        storeId: e.detail.storeId,
+        status: 'SUCCESS',
+        statusDetails: 'Payment went thru',
+        products: e.detail.products
+    }
 }
