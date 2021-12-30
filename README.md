@@ -1,7 +1,7 @@
 # Checklist
 
--   ✅ Project: App
--   🔲 Pipeline
+-   ✅ Project: Core
+-   ✅ Pipeline
 -   🔲 E2E Tests
 -   🔲 Canaries
 -   🔲 Alarms

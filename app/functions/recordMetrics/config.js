@@ -5,12 +5,13 @@ module.exports = {
             Resource: '*'
         },
         {
-            Action: ['dynamodb:Query'],
-            Resource: '*'
+            Action: ['dynamodb:*'],
+            Resource:
+                'arn:aws:dynamodb:{@region}:251256923172:table/CoffeeCore-{@stage}'
         }
     ],
     env: {
-        DB: 'sonic2dev'
+        DB: 'CoffeeCore-{@stage}'
     },
     trigger: 'sonic2dev_orderCompleted'
 }

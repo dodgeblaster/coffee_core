@@ -17,6 +17,16 @@ module.exports = {
             name: 'Staging',
             actions: [
                 {
+                    type: 'DEPLOY',
+                    name: 'BaseResources',
+                    inputArtifact: 'sourceZip',
+                    stackName: 'coffecoreresources-staging',
+                    template: 'app/resources_base.yml',
+                    parameters: {
+                        Stage: 'staging'
+                    }
+                },
+                {
                     type: 'BUILD',
                     name: 'Deploy',
                     script: '/deploy.yml',
@@ -33,6 +43,10 @@ module.exports = {
                     functionName:
                         'coffeecoretestsstaging-makePaymentTest-staging',
                     region: 'us-east-1'
+                },
+                {
+                    type: 'APPROVAL',
+                    name: 'ReadyToRelease'
                 }
             ]
         },
