@@ -1,3 +1,4 @@
 module.exports = {
-    name: 'coffeecore'
+    name: 'coffeecore',
+    dashboard: true
 }

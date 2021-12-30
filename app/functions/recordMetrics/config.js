@@ -13,5 +13,5 @@ module.exports = {
     env: {
         DB: 'CoffeeCore-{@stage}'
     },
-    trigger: 'sonic2dev_orderCompleted'
+    trigger: 'sonic2{@stage}_orderCompleted'
 }

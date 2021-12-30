@@ -14,6 +14,10 @@ const getEventTime = (list, event) =>
  * - record custom metric into cloudwatch
  */
 module.exports.handler = async (e) => {
+    // write batch of records to db,
+    // list all of this hours times
+    // average
+
     /**
      * Get Order Events
      */

@@ -18,7 +18,7 @@ module.exports = {
             actions: [
                 {
                     type: 'DEPLOY',
-                    name: 'BaseResources',
+                    name: 'DeployBaseResources',
                     inputArtifact: 'sourceZip',
                     stackName: 'coffecoreresources-staging',
                     template: 'app/resources_base.yml',
@@ -28,7 +28,7 @@ module.exports = {
                 },
                 {
                     type: 'BUILD',
-                    name: 'Deploy',
+                    name: 'DeployLambdasAndTests',
                     script: '/deploy.yml',
                     env: {
                         STAGE: 'staging',
@@ -54,12 +54,22 @@ module.exports = {
             name: 'Prod',
             actions: [
                 {
+                    type: 'DEPLOY',
+                    name: 'DeployBaseResources',
+                    inputArtifact: 'sourceZip',
+                    stackName: 'coffecoreresources-prod',
+                    template: 'app/resources_base.yml',
+                    parameters: {
+                        Stage: 'prod'
+                    }
+                },
+                {
                     type: 'BUILD',
-                    name: 'Deploy',
+                    name: 'DeployLambdasAndTests',
                     script: '/deploy.yml',
                     env: {
                         STAGE: 'prod',
-                        CANARY: 'off'
+                        CANARY: 'on'
                     },
                     inputArtifact: 'sourceZip',
                     outputArtifact: 'prodZip'
