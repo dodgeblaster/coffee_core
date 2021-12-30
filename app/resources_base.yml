@@ -18,3 +18,4 @@ Resources:
                   KeyType: HASH
                 - AttributeName: SK
                   KeyType: RANGE
+            BillingMode: PAY_PER_REQUEST
