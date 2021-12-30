@@ -5,4 +5,4 @@
 -   🔲 E2E Tests
 -   🔲 Canaries
 -   🔲 Alarms
--   🔲 Dashboards
+-   ✅ Dashboards
