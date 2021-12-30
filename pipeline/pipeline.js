@@ -21,7 +21,7 @@ module.exports = {
                     name: 'Deploy',
                     script: '/deploy.yml',
                     env: {
-                        STAGE: 'test',
+                        STAGE: 'staging',
                         CANARY: 'off'
                     },
                     inputArtifact: 'sourceZip',
@@ -30,7 +30,8 @@ module.exports = {
                 {
                     type: 'INVOKE',
                     name: 'Test',
-                    functionName: 'coffeecoretests-makePaymentTest-test',
+                    functionName:
+                        'coffeecoretestsstaging-makePaymentTest-staging',
                     region: 'us-east-1'
                 }
             ]

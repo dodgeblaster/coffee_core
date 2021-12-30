@@ -46,7 +46,7 @@ async function invoke(name, input) {
 
 module.exports.handler = async (event, context) => {
     try {
-        const res = await invoke('coffeecore-makePayment-dev', {
+        const res = await invoke('coffeecorestaging-makePayment-staging', {
             detail: {
                 synth: true,
                 id: '100',
