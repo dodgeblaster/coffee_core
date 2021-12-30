@@ -6,5 +6,5 @@ module.exports = {
         }
     ],
     env: {},
-    trigger: 'sonic2dev_paymentStarted' // use , instead of _
+    trigger: 'sonic2{@stage}_paymentStarted' // use , instead of _
 }

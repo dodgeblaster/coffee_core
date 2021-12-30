@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk')
 const assert = require('assert')
 
-async function putJobFailure(props) {
+async function reportTestFail(props) {
     const codepipeline = new AWS.CodePipeline()
     if (props.event['CodePipeline.job']) {
         const jobId = props.event['CodePipeline.job'].id
@@ -14,8 +14,9 @@ async function putJobFailure(props) {
                 externalExecutionId: props.context.awsRequestId
             }
         }
-        await codepipeline.putJobFailureResult(params)
-        return props.message
+        codepipeline.putJobFailureResult(params, function (err, data) {
+            context.fail(props.message)
+        })
     }
 }
 
@@ -55,19 +56,24 @@ module.exports.handler = async (event, context) => {
             }
         })
 
-        assert.equal(res.id, '100')
-        assert.equal(res.storeId, '200')
-        assert.equal(res.products, 'mock_products')
+        const result = JSON.parse(res.Payload)
+
+        assert.equal(result.id, '100')
+        assert.equal(result.storeId, '200')
+        assert.equal(result.products, 'mock_products')
 
         await putJobSuccess({
             event,
             context
         })
+
+        return 'Success'
     } catch (e) {
-        await putJobFailure({
+        await reportTestFail({
             event,
             context,
             message: e.message
         })
+        throw new Error(e)
     }
 }
