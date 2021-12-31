@@ -11,6 +11,7 @@ module.exports = {
         doc: `This is a description of this lambda function`,
         invocationAlarm: 0,
         invocationGoal: 10,
+        errorGoal: 0,
         errorAlarm: 2,
         durationAlarm: 20000,
         durationGoal: 1000
