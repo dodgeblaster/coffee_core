@@ -13,5 +13,12 @@ module.exports = {
     env: {
         DB: 'CoffeeCore-{@stage}'
     },
-    trigger: 'sonic2{@stage}_orderCompleted'
+    trigger: 'sonic2{@stage}_orderCompleted',
+    dashboard: {
+        doc: `This is a description of this lambda function`
+    },
+    alarm: {
+        threshold: 2,
+        snsTopic: 'arn:aws:sns:us-east-1:251256923172:ChatOpsTopic'
+    }
 }

@@ -4,5 +4,5 @@
 -   ✅ Pipeline
 -   🔲 E2E Tests
 -   🔲 Canaries
--   🔲 Alarms
+-   ✅ Alarms
 -   ✅ Dashboards
