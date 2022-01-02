@@ -1,19 +1,7 @@
 module.exports = {
-    // permissions: [
-    //     {
-    //         Action: 'lambda:*',
-    //         Resource: '*'
-    //     },
-    //     {
-    //         Action: [
-    //             'codepipeline:PutJobFailureResult',
-    //             'codepipeline:PutJobSuccessResult'
-    //         ],
-    //         Resource: '*'
-    //     }
-    // ],
     env: {
-        FUNCTION: 'coffeecorestaging-makePayment-staging'
+        FUNCTION: 'coffeecore{@stage}-makePayment-{@stage}'
     },
-    timeout: 900
+    timeout: 900,
+    canaryRate: '10 minutes'
 }

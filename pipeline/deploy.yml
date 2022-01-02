@@ -8,4 +8,4 @@ phases:
         commands:
             - npm i -g sls-focus-cli && npm i -g risetestcli
             - cd ./app && focus deploy --stage=$STAGE
-            - cd ../tests && risetest deploy --stage=$STAGE
+            - cd ../tests && risetest deploy --stage=$STAGE --canary=$CANARY
