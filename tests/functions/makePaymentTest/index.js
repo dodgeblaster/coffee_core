@@ -78,8 +78,8 @@
 //     }
 // }
 
-module.exports.handler = async ({ invoke, assert }) => {
-    const res = await invoke('coffeecorestaging-makePayment-staging', {
+module.exports.test = async ({ invoke, assert }) => {
+    const res = await invoke(process.env.FUNCTION, {
         detail: {
             synth: true,
             id: '100',
@@ -90,7 +90,6 @@ module.exports.handler = async ({ invoke, assert }) => {
     })
 
     const result = JSON.parse(res.Payload)
-
     assert.equal(result.id, '100')
     assert.equal(result.storeId, '200')
     assert.equal(result.products, 'mock_products')

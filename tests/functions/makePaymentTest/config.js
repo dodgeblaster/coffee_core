@@ -12,6 +12,8 @@ module.exports = {
     //         Resource: '*'
     //     }
     // ],
-    env: {},
+    env: {
+        FUNCTION: 'coffeecorestaging-makePayment-staging'
+    },
     timeout: 900
 }
