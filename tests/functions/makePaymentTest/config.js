@@ -1,17 +1,17 @@
 module.exports = {
-    permissions: [
-        {
-            Action: 'lambda:*',
-            Resource: '*'
-        },
-        {
-            Action: [
-                'codepipeline:PutJobFailureResult',
-                'codepipeline:PutJobSuccessResult'
-            ],
-            Resource: '*'
-        }
-    ],
+    // permissions: [
+    //     {
+    //         Action: 'lambda:*',
+    //         Resource: '*'
+    //     },
+    //     {
+    //         Action: [
+    //             'codepipeline:PutJobFailureResult',
+    //             'codepipeline:PutJobSuccessResult'
+    //         ],
+    //         Resource: '*'
+    //     }
+    // ],
     env: {},
     timeout: 900
 }
