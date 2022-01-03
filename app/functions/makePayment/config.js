@@ -6,7 +6,7 @@ module.exports = {
         }
     ],
     env: {},
-    trigger: 'sonic2{@stage}_paymentStarted', // use , instead of _
+    trigger: 'sonic2{@stage}_paymentStarted',
     dashboard: {
         doc: `This is a description of this lambda function`,
         invocationAlarm: 0,
@@ -18,6 +18,6 @@ module.exports = {
     },
     alarm: {
         threshold: 2,
-        snsTopic: 'arn:aws:sns:us-east-1:251256923172:ChatOpsTopic'
+        snsTopic: 'arn:aws:sns:{@region}:{@accountId}:ChatOpsTopic'
     }
 }
