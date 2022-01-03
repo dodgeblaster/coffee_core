@@ -2,7 +2,7 @@ module.exports = {
     name: 'coffee-core-pipeline',
     stages: [
         {
-            name: 'source',
+            name: 'Source',
             actions: [
                 {
                     type: 'SOURCE',
@@ -40,8 +40,7 @@ module.exports = {
                 {
                     type: 'INVOKE',
                     name: 'Test',
-                    functionName:
-                        'coffeecoretestsstaging-makePaymentTest-staging',
+                    functionName: 'coffeecoretests-makePaymentTest-staging',
                     region: 'us-east-1'
                 }
             ]
