@@ -1,4 +1,5 @@
 module.exports = {
     permissions: [],
-    substitution: {}
+    substitution: {},
+    trigger: 'sonic2{@stage}_orderCompleted'
 }
