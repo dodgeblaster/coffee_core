@@ -43,10 +43,6 @@ module.exports = {
                     functionName:
                         'coffeecoretestsstaging-makePaymentTest-staging',
                     region: 'us-east-1'
-                },
-                {
-                    type: 'APPROVAL',
-                    name: 'ReadyToRelease'
                 }
             ]
         },
