@@ -25,7 +25,7 @@
             "Type": "Task",
             "Resource": "arn:aws:states:::dynamodb:putItem",
             "Parameters": {
-                "TableName": "${DDBTable}",
+                "TableName": "CoffeeCore{@stage}",
                 "Item": {
                     "pk": {
                         "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
@@ -44,7 +44,7 @@
             "Type": "Task",
             "Resource": "arn:aws:states:::dynamodb:putItem",
             "Parameters": {
-                "TableName": "${DDBTable}",
+                "TableName": "CoffeeCore{@stage}",
                 "Item": {
                     "pk": {
                         "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
