@@ -3,11 +3,11 @@ module.exports = {
         {
             Action: ['dynamodb:*'],
             Resource:
-                'arn:aws:dynamodb:{@region}:{@accountId}:table/CoffeeCore-{@stage}'
+                'arn:aws:dynamodb:{@region}:{@accountId}:table/CoffeeCore{@stage}'
         }
     ],
     substitution: {
-        Table: 'CoffeeCore-{@stage}'
+        Table: 'CoffeeCore{@stage}'
     },
     trigger: 'sonic2{@stage}_orderStatusUpdated'
 }

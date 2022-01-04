@@ -9,7 +9,7 @@ const permissions = [
     {
         Action: ['dynamodb:*'],
         Resource:
-            'arn:aws:dynamodb:{@region}:{@accountId}:table/CoffeeCore-{@stage}'
+            'arn:aws:dynamodb:{@region}:{@accountId}:table/CoffeeCore{@stage}'
     }
 ]
 
@@ -17,7 +17,7 @@ const permissions = [
  * Environment Variables for Lambda Function
  */
 const env = {
-    DB: 'CoffeeCore-{@stage}'
+    DB: 'CoffeeCore{@stage}'
 }
 
 /**

@@ -7,7 +7,7 @@ Resources:
     Table:
         Type: AWS::DynamoDB::Table
         Properties:
-            TableName: !Sub 'CoffeeCore-${Stage}'
+            TableName: !Sub 'CoffeeCore${Stage}'
             AttributeDefinitions:
                 - AttributeName: PK
                   AttributeType: S
