@@ -27,10 +27,10 @@
             "Parameters": {
                 "TableName": "CoffeeCore{@stage}",
                 "Item": {
-                    "pk": {
+                    "PK": {
                         "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
                     },
-                    "sk": {
+                    "SK": {
                         "S": "added"
                     },
                     "time": {
@@ -46,10 +46,10 @@
             "Parameters": {
                 "TableName": "CoffeeCore{@stage}",
                 "Item": {
-                    "pk": {
+                    "PK": {
                         "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
                     },
-                    "sk": {
+                    "SK": {
                         "S": "started"
                     },
                     "time": {
@@ -65,10 +65,10 @@
             "Parameters": {
                 "TableName": "CoffeeCore{@stage}",
                 "Item": {
-                    "pk": {
+                    "PK": {
                         "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
                     },
-                    "sk": {
+                    "SK": {
                         "S": "completed"
                     },
                     "time": {
