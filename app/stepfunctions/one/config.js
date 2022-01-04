@@ -1,5 +1,13 @@
 module.exports = {
-    permissions: [],
-    substitution: {},
-    trigger: 'sonic2{@stage}_orderCompleted'
+    permissions: [
+        {
+            Action: ['dynamodb:*'],
+            Resource:
+                'arn:aws:dynamodb:{@region}:{@accountId}:table/CoffeeCore-{@stage}'
+        }
+    ],
+    substitution: {
+        Table: 'CoffeeCore-{@stage}'
+    },
+    trigger: 'sonic2{@stage}_orderStatusUpdated'
 }

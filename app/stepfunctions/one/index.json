@@ -1,8 +1,84 @@
 {
-    "StartAt": "One3",
+    "StartAt": "Which type of order event?",
     "States": {
-        "One3": {
-            "Type": "Pass",
+        "Which type of order event?": {
+            "Type": "Choice",
+            "Choices": [
+                {
+                    "Variable": "$.detail.type",
+                    "StringEquals": "order-added",
+                    "Next": "AddOrderAddedTimeStamp"
+                },
+                {
+                    "Variable": "$.detail.type",
+                    "StringEquals": "order-started",
+                    "Next": "AddOrderStartedTimeStamp"
+                },
+                {
+                    "Variable": "$.detail.type",
+                    "StringEquals": "order-completed",
+                    "Next": "AddOrderCompletedTimeStamp"
+                }
+            ]
+        },
+        "AddOrderAddedTimeStamp": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::dynamodb:putItem",
+            "Parameters": {
+                "TableName": "${Table}",
+                "Item": {
+                    "pk": {
+                        "S": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
+                    },
+                    "sk": {
+                        "S": "added"
+                    },
+                    "time": {
+                        "S": "$.detail.time"
+                    }
+                },
+                "ResultPath": "$.DynamoDB"
+            },
+            "End": true
+        },
+        "AddOrderStartedTimeStamp": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::dynamodb:putItem",
+            "Parameters": {
+                "TableName": "${Table}",
+                "Item": {
+                    "pk": {
+                        "S": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
+                    },
+                    "sk": {
+                        "S": "started"
+                    },
+                    "time": {
+                        "S": "$.detail.time"
+                    }
+                },
+                "ResultPath": "$.DynamoDB"
+            },
+            "End": true
+        },
+        "AddOrderCompletedTimeStamp": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::dynamodb:putItem",
+            "Parameters": {
+                "TableName": "${Table}",
+                "Item": {
+                    "pk": {
+                        "S": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
+                    },
+                    "sk": {
+                        "S": "completed"
+                    },
+                    "time": {
+                        "S": "$.detail.time"
+                    }
+                },
+                "ResultPath": "$.DynamoDB"
+            },
             "End": true
         }
     }
