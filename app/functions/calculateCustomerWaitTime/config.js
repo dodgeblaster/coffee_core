@@ -1,17 +1,7 @@
 /**
  * Permissions for Lambda Function
  */
-const permissions = [
-    {
-        Action: ['cloudwatch:PutMetricData'],
-        Resource: '*'
-    },
-    {
-        Action: ['dynamodb:*'],
-        Resource:
-            'arn:aws:dynamodb:{@region}:{@accountId}:table/CoffeeCore{@stage}'
-    }
-]
+const permissions = []
 
 /**
  * Environment Variables for Lambda Function
@@ -40,7 +30,6 @@ const alarm = {
 module.exports = {
     permissions,
     env,
-    trigger: 'sonic2{@stage}_orderCompleted',
     dashboard,
     alarm
 }
