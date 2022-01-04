@@ -7,7 +7,7 @@ module.exports = {
         }
     ],
     substitution: {
-        Table: 'CoffeeCore{@stage}'
+        DDBTable: 'CoffeeCore{@stage}'
     },
     trigger: 'sonic2{@stage}_orderStatusUpdated'
 }

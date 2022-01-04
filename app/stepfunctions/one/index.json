@@ -25,16 +25,16 @@
             "Type": "Task",
             "Resource": "arn:aws:states:::dynamodb:putItem",
             "Parameters": {
-                "TableName": "${Table}",
+                "TableName": "${DDBTable}",
                 "Item": {
                     "pk": {
-                        "S": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
+                        "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
                     },
                     "sk": {
                         "S": "added"
                     },
                     "time": {
-                        "S": "$.detail.time"
+                        "S.$": "$.detail.time"
                     }
                 }
             },
@@ -44,16 +44,16 @@
             "Type": "Task",
             "Resource": "arn:aws:states:::dynamodb:putItem",
             "Parameters": {
-                "TableName": "${Table}",
+                "TableName": "${DDBTable}",
                 "Item": {
                     "pk": {
-                        "S": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
+                        "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
                     },
                     "sk": {
                         "S": "started"
                     },
                     "time": {
-                        "S": "$.detail.time"
+                        "S.$": "$.detail.time"
                     }
                 }
             },
@@ -63,16 +63,16 @@
             "Type": "Task",
             "Resource": "arn:aws:states:::dynamodb:putItem",
             "Parameters": {
-                "TableName": "${Table}",
+                "TableName": "${DDBTable}",
                 "Item": {
                     "pk": {
-                        "S": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
+                        "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
                     },
                     "sk": {
                         "S": "completed"
                     },
                     "time": {
-                        "S": "$.detail.time"
+                        "S.$": "$.detail.time"
                     }
                 }
             },
