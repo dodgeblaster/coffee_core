@@ -25,7 +25,7 @@
             "Type": "Task",
             "Resource": "arn:aws:states:::dynamodb:putItem",
             "Parameters": {
-                "TableName": "CoffeeCore{@stage}",
+                "TableName": "CoffeeCore${stage}",
                 "Item": {
                     "PK": {
                         "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
@@ -44,7 +44,7 @@
             "Type": "Task",
             "Resource": "arn:aws:states:::dynamodb:putItem",
             "Parameters": {
-                "TableName": "CoffeeCore{@stage}",
+                "TableName": "CoffeeCore${stage}",
                 "Item": {
                     "PK": {
                         "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
@@ -63,7 +63,7 @@
             "Type": "Task",
             "Resource": "arn:aws:states:::dynamodb:putItem",
             "Parameters": {
-                "TableName": "CoffeeCore{@stage}",
+                "TableName": "CoffeeCore${stage}",
                 "Item": {
                     "PK": {
                         "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
@@ -76,6 +76,46 @@
                     }
                 }
             },
+            "ResultPath": null,
+            "Next": "List all order status updates"
+        },
+        "List all order status updates": {
+            "Type": "Task",
+            "Parameters": {
+                "TableName": "CoffeeCore${stage}",
+                "KeyConditionExpression": "PK = :PK AND begins_with(SK, :SK)",
+                "ExpressionAttributeValues": {
+                    ":PK": {
+                        "S.$": "States.Format('{}_{}', $.detail.storeId, $.detail.id)"
+                    },
+                    ":SK": {
+                        "S": "added"
+                    }
+                }
+            },
+            "Resource": "arn:aws:states:::aws-sdk:dynamodb:query",
+            "Next": "DetermineCustomerWaitTime"
+        },
+        "DetermineCustomerWaitTime": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::lambda:invoke",
+            "OutputPath": "$.Payload",
+            "Parameters": {
+                "Payload.$": "$",
+                "FunctionName": "arn:aws:lambda:{@region}:{@accountId}:function:coffeecoretests-makePaymentTest-{@stage}:$LATEST"
+            },
+            "Retry": [
+                {
+                    "ErrorEquals": [
+                        "Lambda.ServiceException",
+                        "Lambda.AWSLambdaException",
+                        "Lambda.SdkClientException"
+                    ],
+                    "IntervalSeconds": 2,
+                    "MaxAttempts": 6,
+                    "BackoffRate": 2
+                }
+            ],
             "End": true
         }
     }
